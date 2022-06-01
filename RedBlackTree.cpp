@@ -29,8 +29,12 @@ public:
   void leftRotate(NodeRB x);
   void rightRotate(NodeRB x);
   void Search(int key);
-  void Print(NodeRB root, string tmp, bool last);
-  
+  void Print(NodeRB root, string indent, bool last);
+  bool check(){
+    if(root==nullptr)
+        return true;
+    return false;
+}
   NodeRB minimum(NodeRB node)
   {
     while (node->left != q)
@@ -80,6 +84,11 @@ public:
     }
 
     return y;
+  }
+
+  NodeRB getRoot()
+  {
+    return this->root;
   }
 
   void deleteNode(int key)
@@ -435,6 +444,12 @@ void RBtree::Insert(int key)
 }
 
 void RBtree::Search(int data){
+  if(RBtree::check())
+     {
+        cout<<"\nEmpty Tree\n";
+        return;
+     }
+
      Node *p=root;
      int flag=0;
      while(p!=NULL&& flag==0)
@@ -453,16 +468,16 @@ void RBtree::Search(int data){
      else
         cout<<"\nFound!!!\n";
 }
-void RBtree::Print(NodeRB root, string tmp, bool last)
+void RBtree::Print(NodeRB root, string indent, bool last)
   {
 
     if (root != q)
     {
-      cout << tmp;
+      cout << indent;
       if (last)
       {
         cout << "RightNode: ";
-        tmp += "===========";
+        indent += "===========";
       }
       else
       {
