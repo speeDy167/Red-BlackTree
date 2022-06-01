@@ -29,7 +29,7 @@ public:
   void leftRotate(NodeRB x);
   void rightRotate(NodeRB x);
   void Search(int key);
-  void Print(NodeRB root, string indent, bool last);
+  void Print(NodeRB root, string tmp, bool last);
   
   NodeRB minimum(NodeRB node)
   {
